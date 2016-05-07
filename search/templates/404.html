@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'music/css/bootstrap.min.css' %}" />
+        <link href="{% static 'music/css/stylish-portfolio.css' %}" rel="stylesheet">
+        <script src="{% static "music/js/bootstrap.min.js" %}"></script>
+
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400normal' rel='stylesheet' type='text/css'>
+        
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        
+        <title>GreedyGame Musicapp</title>
+    </head>
+
+    <body>
+
+        {% block bodyblock %}
+
+
+        <div class="container">      
+            <div class="jumbotron text-center">
+                <h1>That's a 404<br /> <small> Greedygame demo excercise</small></h1>
+
+                <p class="lead">
+
+                There aren't many pages in this webapp to be confused really.
+                <a href = '{% url 'tracks' %}'>tracks/</a> - List of Tracks<br>
+                <a href = '{% url 'song-update' %}'>track/1/</a> - Update Track #1<br>
+                <a href = '{% url 'song-create' %}'>track/add</a> - Add a Track<br>
+                <a href = '{% url 'genre' %}'>genres/</a> - List of Genres<br>
+                <a href = '{% url 'genre-create' %}'>genres/add</a> - Add a Genre<br>
+                <a href = '{% url 'genre-update' %}'>genres/1/</a> - Update Genre #1<br>
+                <a href = '{% url 'search' query:"DJ" %}'>search/?query=DJ</a> - Search tracks based on their names and genres<br>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="container">      
+            <div class="footer navbar-fixed-bottom">
+                <h3 align="center"><a href="mailto:deathbullet@gmail.com">Get in touch</a></h3>
+                <br />
+            </div>
+        </div>
+
+
+
+        {% endblock %}
+        <!-- jQuery -->
+        <script src="{% static "music/js/jquery.js" %}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static "music/js/bootstrap.min.js" %}"></script>
+
+
+    </body>
+
+    </html>

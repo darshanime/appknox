@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'search/css/bootstrap.min.css' %}" />
+        <link href="{% static 'search/css/stylish-portfolio.css' %}" rel="stylesheet">
+        <script src="{% static "search/js/bootstrap.min.js" %}"></script>
+
+        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400normal' rel='stylesheet' type='text/css'>
+        
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        
+        <title>Google Play Searcher</title>
+    </head>
+
+    <body>
+
+        {% block bodyblock %}
+        {% endblock %}
+        <!-- jQuery -->
+        <script src="{% static "search/js/jquery.js" %}"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static "search/js/bootstrap.min.js" %}"></script>
+
+
+    </body>
+
+    </html>

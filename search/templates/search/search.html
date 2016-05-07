@@ -1,0 +1,52 @@
+{% extends 'search/base.html' %}
+{% block bodyblock %}
+
+{% load static %}
+
+        <div class="container">      
+            <div class="text-center">
+                <h2>Search results<br /> <small>AppKnox demo exercise</small></h2>
+                <h3> links:</h3>
+                {% for app in object_list %}
+                {{ app }}<br>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <form method="get" action="/search" >
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Play Store" id="query" name="query" value="" />
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+                                </div>
+                            </div>
+                            </form>
+                        <br>
+                    </div>
+                    <div class="col-lg-4"></div>
+                    <br>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-lg-2"></div>
+
+                    <div class="col-lg-8">
+                        <table class="table table-center table-bordered">
+                          <thead>
+                          </thead>
+                          <tbody class="text-center">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="footer navbar-bottom text-center">
+            </div>
+        </div>
+
+{% endblock %}

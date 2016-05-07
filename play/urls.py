@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from search import views
+from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', views.HomeView.as_view(), name="home"),
-    url(r'^search/', views.SearchView.as_view(), name="search"),
+    url(r'^search/', cache_page(60*5)(views.SearchView.as_view()), name="search"),
+    url(r'^detail/(?P<pk>[0-9]+)/$', views.AppDetail.as_view(), name='detail'),
 
 ]

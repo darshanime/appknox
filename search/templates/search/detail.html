@@ -5,7 +5,7 @@
 
         <div class="container">      
             <div class="text-center">
-                <h2>Search results<br /> <small>AppKnox demo exercise</small></h2>
+                <h2>{{ object.title }}<br /> <small>AppKnox demo exercise</small></h2>
                 <div class="row">
                     <div class="col-lg-4"></div>
                     <div class="col-lg-4">
@@ -27,28 +27,15 @@
                     <div class="col-lg-2"></div>
 
                     <div class="col-lg-8">
-                        <table class="table table-center table-bordered">
-                          <thead class="table table-center table-bordered">
-                            <tr>
-                              <th>SNo</th>
-                              <th>Title</th>
-                              <th>App id</th>
-                              <th>Developer Name</th>
-                            </tr>
-                          </thead>
-                          <tbody class="text-center">
-                            {% for app in object_list %}
-                            <tr>
-                              <th scope="row" class="text-center">{{ forloop.counter }}</th>
-                              <td><a href="{% url 'detail' app.pk %}">{{ app.title }}</td>
-                              <td>{{ app.appid }}</td>
-                              <td>{{ app.devname }}</td>
-                            </tr>
-                            {% empty %}
-                            <h2> No Apps found </h2>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                    <div class="jumbotron">
+                      <h2>Rating info : {{ object.rating_info }}</h2>
+                      <h2>Size : {{ object.size }}</h2>
+                      <h2>Installs : {{ object.installs }}</h2>
+                      <h2>Current version : {{ object.current_version }}</h2>
+                      <h2>Required Android : {{ object.reqs_android }}</h2>
+                      <h2>Updated : {{ object.updated }}</h2>
+                      Image<br> {{ object.src }}
+                    </div>
                     </div>
 
                     <div class="col-lg-2"></div>
@@ -57,7 +44,7 @@
         </div>
 
         <div class="container text-center">
-          <a href="{% url 'home' %}"><button type="submit" class="btn btn-success">Back to home page</button></a>
+          <a href="{{request.META.HTTP_REFERER}}"><button type="submit" class="btn btn-success">Back to search results</button></a>
             <div class="footer navbar-bottom text-center">
             </div>
         </div>

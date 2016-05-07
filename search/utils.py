@@ -22,15 +22,17 @@ def get_results(query):
     apps = []
     flags = []
     for l,id_ in enumerate(ids):
-        if not App.filter.get(appid=id_):
-            flags[l] = get_info(id_)
+        if sum(flags)>=10:
+            break
+        if not App.objects.filter(appid=id_).exists():
+            flags.append(get_info(id_))
         else:
-            flags[l] = True
+            flags.append(True)
 
     for l,flag in enumerate(flags):
-        while len(apps)<10:
-            if flag:
-                apps.append(App.filter.get(appid=ids[l]))
+        print l, flag
+        if flag:
+            apps.append(App.objects.get(appid=ids[l]))
 
     return apps
 
@@ -49,8 +51,31 @@ def get_info(id_):
 
         devname = soup.find(class_="document-subtitle primary").get_text()
 
-        newApp = App(title=title, appid=id_, rating_info = rating, devname = devname)
+        for item in soup.select("div.details-section-contents div.meta-info"):
+            if item.select("div.title") and item.select("div.content"):
+                info = item.select("div.title")[0].get_text().strip()
+                data = item.select("div.content")[0].get_text().strip()
+                    
+                if info=='Updated':
+                    updated = data
+                if info=='Size':
+                    size = data
+                if info=='Installs':
+                    installs = data
+                if info=='Current Version':
+                    curver = data
+                if info == 'Requires Android':
+                    reqand = data
+
+        src = soup.select("div.cover-container")[0].select("img")[0]['src']
+        if not src.startswith("https"):
+            src = "https:"+src
+        print src
+        newApp = App(title=title, appid=id_, rating_info = rating, devname = devname, size=size, \
+            installs=installs, current_version = curver, reqs_android = reqand, updated=updated, \
+            src=src)
         newApp.save()
+
         return True
     except:
         return False

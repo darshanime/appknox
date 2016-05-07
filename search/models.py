@@ -7,5 +7,12 @@ class App(models.Model):
     appid = models.CharField(max_length=128, unique=True)
     rating_info = models.CharField(max_length=128)
     devname = models.CharField(max_length=128)
+    size = models.CharField(max_length=128)
+    installs = models.CharField(max_length=128)
+    current_version = models.CharField(max_length=128)
+    reqs_android = models.CharField(max_length=128)
+    updated = models.CharField(max_length=128)
+    src = models.URLField(max_length=1000, default="none")
 
-# Create your models here.
+    def __str__(self):
+        return self.title

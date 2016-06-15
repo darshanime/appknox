@@ -19,6 +19,7 @@ from search import views
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
+    url(r'^$', views.HomeView.as_view(), name="home"),
     url(r'^admin/', admin.site.urls),
     url(r'^home/', views.HomeView.as_view(), name="home"),
     url(r'^search/', cache_page(60*5)(views.SearchView.as_view()), name="search"),

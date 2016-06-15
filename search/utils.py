@@ -1,14 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 from models import App
+import agents
+import random
 
 def get_results(query):
 
     url = "https://play.google.com/store/search?q="+query+"&c=apps"
-    r = requests.get(url, headers={
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36"
-})
+    r = requests.get(url, headers={"User-Agent": random.choice(agents.AGENTS)})
 
+    print r.request.headers['User-Agent']
     html = r.text
     soup = BeautifulSoup(html)
     ids = []
